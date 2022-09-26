@@ -135,7 +135,7 @@
         }
     }
 
-    self.nfcSession.alertMessage = @"Hold near writable NFC tag to update.";
+    self.nfcSession.alertMessage = @"Place your mobile device on the receiver to establish a connection to the game.";
     sessionCallbackId = [command.callbackId copy];
 
     if (reusingSession) {                   // reusing a read session to write
@@ -314,14 +314,14 @@
             self.nfcSession = [[NFCNDEFReaderSession new]initWithDelegate:self queue:nil invalidateAfterFirstRead:TRUE];
         }
         sessionCallbackId = [command.callbackId copy];
-        self.nfcSession.alertMessage = @"Hold near NFC tag to scan.";
+        self.nfcSession.alertMessage = @"Place your mobile device on the receiver to establish a connection to the game.";
         [self.nfcSession beginSession];
         
     } else if (@available(iOS 11.0, *)) {
         NSLog(@"iOS < 13, using NFCNDEFReaderSession");
         self.nfcSession = [[NFCNDEFReaderSession new]initWithDelegate:self queue:nil invalidateAfterFirstRead:TRUE];
         sessionCallbackId = [command.callbackId copy];
-        self.nfcSession.alertMessage = @"Hold near NFC tag to scan.";
+        self.nfcSession.alertMessage = @"Place your mobile device on the receiver to establish a connection to the game.";
         [self.nfcSession beginSession];
     } else {
         NSLog(@"iOS < 11, no NFC support");
